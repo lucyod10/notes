@@ -75,21 +75,22 @@ Emmet
 - `p.hotdog`
 - `p.hotdog.vegan`
 ```
-- div.brothers>ul>li.brother*3>p.biography
-    - <div class="brothers">
-    -       <ul>
-    -         <li class="brother">
-    -           <p class="biography"></p>
-    -         </li>
-    -         <li class="brother">
-    -           <p class="biography"></p>
-    -         </li>
-    -         <li class="brother">
-    -           <p class="biography"></p>
-    -         </li>
-    -       </ul>
-    -     </div>
-    ```
+div.brothers>ul>li.brother*3>p.biography
+    <div class="brothers">
+          <ul>
+            <li class="brother">
+              <p class="biography"></p>
+            </li>
+            <li class="brother">
+              <p class="biography"></p>
+            </li>
+            <li class="brother">
+              <p class="biography"></p>
+            </li>
+          </ul>
+        </div>
+
+  ```
 
 If you have something with position relative, the children with position absolute will be absolute based off the parent.
 
