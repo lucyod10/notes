@@ -11,11 +11,11 @@ function | description
 `array.pop()	` | removes the last value of an array. Returns the data that was removed (so you can put it in a variable)
 arguments	inside of a function, the arguments keyword returns an array of the argument values
 
-
-`for (let animal in zoo ) {
+```
+for (let animal in zoo ) {
 	console.log(`the key: ${animal}, and the value is: ${zoo[animal]}`);
 }
-`
+```
 
 A function does not need the exact number of arguments, it will keep track of them all in an array called arguments. you can, for example, loop through the arguments and add them all together.
 
