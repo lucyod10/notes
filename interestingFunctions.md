@@ -53,3 +53,6 @@ htmlandcssbook.com
 
 thought works
 mozilla
+
+`curl https://code.jquery.com/jquery-3.4.1.js > js/jquery.js`
+to download jquery 
