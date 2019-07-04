@@ -23,11 +23,14 @@ slideToggle() |
 stop() | stops jquery animations
 stop(true, true) | clears all the queued animations and jumps the current animation to the final value. This prevents glitches in situations like onMouseEnter where it can happen lots of times before the animations are finished
 .on("click", functionname) | replaces addEventListener
+.show() | changes the css to display
+.hide() | changes the css to display: none
+
 
 ```
 .on('sumbit', function (event) {
 		event.preventDefault();
 	});
-	```
+```
 
-	This allows you to create your own function linked to the submit action, and the event parameter is filtered through. Theres a method you can run called preventDefault() which will prevent the default action from happening (like the form being submitted)
+|	This allows you to create your own function linked to the submit action, and the event parameter is filtered through. Theres a method you can run called preventDefault() which will prevent the default action from happening (like the form being submitted)
