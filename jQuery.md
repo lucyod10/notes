@@ -12,6 +12,16 @@ to download jquery into your project
 ```
 to import into HTML. note: make sure this is above your script imports which use jQuery.
 
+### Flip
+```
+curl https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.js > js/jqueryflip.js
+```
+
+```
+<script src="js/jqueryflip.js"></script>
+```
+
+
 ## Small Functions
 
 Function | description

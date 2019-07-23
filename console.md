@@ -43,6 +43,9 @@ command                  | description
 `open -a “Atom”`          |	open the application atom
 `atom ~/.bash_profile`     |	opens the file that opens when you open bash- where you can save alias’. Can change colouring etc too
 `cp -r filePath destinationPath` |
+`# Control -r` | ?? search your console history interactively
+`touch foo{wow,cool,sick}bar` | make lots of files with similar names quickly. Will create 3 files called: foowowbar, foocoolbar, foosickbar
+`control+a` | brings you to front of line. E gets you to end.
 
 If you need to use ‘’ indoor string, use “” to define, or vice versa
 
@@ -95,3 +98,38 @@ div.brothers>ul>li.brother*3>p.biography
 If you have something with position relative, the children with position absolute will be absolute based off the parent.
 
 `box-sizing: 	border-box`	calculates padding and border in width and height. add to all in; `* {}`
+
+### Input (with jQuery)
+
+`$().on('focus', function)` |
+`$().on('blur', function)` |
+`autofocus` | this is added in the HTML tag to make it automatically focussed, so the user can just start typing
+`$().on('keypress', function)` | Fires before it updates the value, so it shows the value before. This is so we can preventDefault()
+`$().on('keyup', function)` | this fires after. you can call `$().value()` to get value as typed
+`$().on('change', function)` | this only fires after you un-blur- so when you click off, it will fire
+
+```
+$().on('keyup', function (event) {
+
+  if (event.keyCode === 13) {
+    //this happens on enter
+
+    //to clear the input after enter
+    $(this).val("");
+  }
+
+  });
+```
+
+#### Finding mouse location
+`clientX` `client Y` | relative to window
+`offsetX` `offsetY` | relative to parent object
+`??` | relative to entire screen, not just window
+
+#### Window
+`window.innerHeight` | this returns the height of the window
+`$().css('opacity', opacity)` | where opacity is a defined number, you can set the css of an image
+
+#### Cacheing
+Cacheing is the idea of saving a copy. Fetching stuff from the DOM is expensive, so reduce the number of calls by saving it in a variable
+`const $bill = $('#bill')`

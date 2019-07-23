@@ -9,6 +9,14 @@ function | description
 `string.includes(“”)` |	checks if the string includes “”
 `string.endswith(“”)` |	checks if the string ends with “”
 `array.pop()	` | removes the last value of an array. Returns the data that was removed (so you can put it in a variable)
+`.split(/\W+/);` | to split into individual words and get rid of punctuation
+`chmod +x ~/bin/wproj` | change the mode of the file, to allow everyone to execute the file. this is needed to make something in the bin folder, and allow us to execute it.
+
+
+
+
+
+
 arguments	inside of a function, the arguments keyword returns an array of the argument values
 
 ```
@@ -55,4 +63,4 @@ thought works
 mozilla
 
 `curl https://code.jquery.com/jquery-3.4.1.js > js/jquery.js`
-to download jquery 
+to download jquery
