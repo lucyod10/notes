@@ -126,4 +126,11 @@ start the server to test the links.
 
 `rails server`
 
+### Hack to allow forms
+
+in `application_controller.rb`
+```
+  skip_before_action :verify_authenticity_token # you only need this for hand written forms
+  ```
+
 ### Hook the rest up
