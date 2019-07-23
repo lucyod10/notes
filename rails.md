@@ -2,7 +2,7 @@
 
 ### Create project
 
-`create new name_of_project --skip-git -T`
+`rails new name_of_project --skip-git -T`
 
 `cd name_of_project`
 
@@ -32,6 +32,15 @@ Move into folder, and add in table to database
 `cd db`
 
 `sqlite3 development.sqlite3 < create_planets.sql`
+
+#### Delete database
+
+If you made your table wrong, and it doesn't have too much data in it, you can just delete the database, then recreate it and re populate it (make your changes to create_planets.sql first):
+```
+rails db:drop
+rails db:create
+sqlite3 development.sqlite3 < create_planets.sql
+```
 
 ### Use database
 
