@@ -1,4 +1,4 @@
-# Rails
+# Rails - sqlite3
 
 ### Create project
 
