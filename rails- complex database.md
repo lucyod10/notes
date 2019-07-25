@@ -1,4 +1,4 @@
-# Rails- postgres
+# Rails- complex databases
 
 Previous days notes:
 
