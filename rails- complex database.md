@@ -568,3 +568,191 @@ in it, put the code for a form. E.g.
 To hook it to a page, render
 
 `<%= render :partial => 'form' %>`
+
+-------
+
+## Day 2
+
+How to create a model, and give it to the current user once they're signed in .
+
+in the routes folder, create route for mixtapes.
+
+`resources :mixtapes, :only => [:new, :create]`
+
+create a mixtapes controller and view
+
+`rails generate controller Mixtapes new`
+
+delete the extra route given to us in the routes file, as we already made the route in the step above.
+
+Add in the path to the navigation.
+
+`<%= link_to "Create Mixtape", new_mixtape_path %>`
+
+create the instance variable for `@mixtape` in its controller, and create the form on the new page.
+```
+def new
+  @mixtape = Mixtape.new
+end
+```
+
+```
+<%= form_for @mixtape do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.submit %>
+<% end %>
+```
+
+add in a create functionality in the mixtape controller
+
+```
+def create
+  # create instead of save, as there is no chance for invalid data.
+  mixtape = Mixtape.create mixtape_params
+  # association with user.
+  @current_user.mixtapes << mixtape
+  # or you can do the above lines, in one line:
+  # @current_user.mixtapes.create mixtape_params
+  redirect_to root_path
+end
+
+private
+def mixtape_params
+  params.require(:mixtape).permit(:title)
+end
+```
+
+To make sure nobody can access parts of the site without being logged in, define this method in the private area of the application controller
+```
+def check_for_login
+  redirect_to login_path unless @current_user.present?
+end
+```
+
+Then put the following code at the top of any controller you want to apply this to:
+
+```
+before_action :check_for_login
+```
+
+and you can add in checks if you don't want it to apply to all the actions:
+
+```
+before_action :check_for_login, :only =>[:new]
+```
+
+## Edit profile
+
+Make route, action and view for the edit profile page.
+
+```rb
+rails generate migration add_name_to_users name:text
+rails db:migrate
+annotate
+```
+
+Add in a form to add a name to the user, in the `user>edit` view
+```
+<%= form_for @user do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Update profile" %>
+<% end %>
+```
+
+then add the functionality for the update page in the user controller
+```rb
+def update
+  user = User.find params[:id]
+  user.update user_params
+  redirect_to
+end
+```
+
+Then add `, :name` to the user_params so that its permitted.
+
+To make it so that you can't edit other people profile, change the route so a little shit cant edit the path, and everyone just goes to the same path which shows themselves
+
+```rb
+resources :users, :only => [:new, :create, :update]
+get '/users/edit' => "users#edit", :as => :edit_user
+```
+```rb
+def edit
+  @user = @current_user
+end
+
+def update
+  @current_user.update user_params
+  redirect_to root_path
+end
+```
+
+```
+<%= link_to "Edit Profile", edit_user_path %>
+```
+
+
+## Admin
+
+Add a new migration to make the admin boolean
+
+```
+rails generate migration add_admin_to_users admin:boolean
+```
+add in the default value false
+```
+add_column :users, :admin, :boolean, :default => false
+```
+add_column :users, :admin, :boolean, :default => false
+
+```
+rails db:migrate
+annotate
+```
+
+Then to change people into admin, run it from the command line:
+```
+rails console
+user = User.first
+user.admin = true
+```
+
+To make sure nobody else can navigate to this page.
+```
+def check_for_admin
+  redirect_to root_path unless @current_user.present? && @current_user.admin?
+end
+```
+
+```
+before_action :check_for_admin, :only => [:index]
+```
+
+
+## Get Javascript working
+
+`aoo>assets>javascript`
+
+add in one called `main.js`
+
+This will be applied to all pages.
+
+**Include jQuery**
+
+stop server
+
+`bundle add jquery-rails`
+
+restart server. This adds it to the `GemFile`
+
+edit the `application.js` to add
+```
+//= require jquery
+```
