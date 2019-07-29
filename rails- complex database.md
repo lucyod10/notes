@@ -104,6 +104,8 @@ You are only generating a migration for this. Not a model like above.
 
 ```rb
 rails generate migration create_mixtapes_songs mixtape_id:integer song_id:integer
+
+
 ```
 
 in the file that was created in `db > migrate`
@@ -355,7 +357,7 @@ has_secure_password
 ```
 
 
-You can then check that in `ruby console`
+You can then check that in `rails console`
 
 ```rb
 u = User.create :email => "wendy@ga.com", :password => "chicken"
@@ -751,6 +753,8 @@ stop server
 `bundle add jquery-rails`
 
 restart server. This adds it to the `GemFile`
+
+add it to your gemfile `gem 'jquery-rails'`
 
 edit the `application.js` to add
 ```
