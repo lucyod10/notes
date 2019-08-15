@@ -760,3 +760,85 @@ edit the `application.js` to add
 ```
 //= require jquery
 ```
+
+## Drop table and create new
+
+### Drop
+
+```
+rails generate migration drop_char_acc_table
+```
+Then edit the drop table to include:
+```
+class DropCharAccTable < ActiveRecord::Migration[5.2]
+  def change
+    drop_table :characters_accessories do |t|
+      t.integer :accessory_id, null: false
+      t.integer :character_id, null: false
+    end
+  end
+end
+```
+
+then migrate
+```
+rails db:migrate
+```
+
+### Create
+To create a new one:
+```
+rails generate migration create_posessions
+rails db:migrate
+annotate
+```
+
+### Edit column
+
+Make migration
+```
+rails generate migration change_column_name
+```
+
+Then edit table in atom to rename
+```
+rename_column :table, :old_column, :new_column
+```
+
+Then migrate and annotate
+```
+rails db:migrate
+annotate
+```
+
+
+# Form saved
+
+```
+<% @accessories.each do |a| %>
+    <div class="accessory_item">
+      <%= accessory_id = "accessory_" + a.id.to_s %>
+      <%= f.check_box :species_id, :id => accessory_id, :data => a.id %>
+      <label for= <%= accessory_id %>>
+      <%= image_tag a.image, :class => "icon" %>
+      </label>
+    </div>
+  <% end %>
+  ```
+
+
+  ```
+  <div class="character_edit">
+    <div class="accessories_selected" id="accessories_selected"></div>
+    <%= image_tag @default_image, :id => "character_edit" %>
+</div>
+```
+
+```
+// TODO: find percentages of current image size.
+const featureWidth = $(".character_feature").width();
+const featureHeight = $(".character_feature").height();
+
+left = Number(featureWidth) / Number(left);
+top = Number(featureHeight) / Number(top);
+```
