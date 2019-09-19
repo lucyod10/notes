@@ -190,3 +190,7 @@ and ternary
 // 31
 // 32
 // 44
+
+# Text Soup 3: The Final Chapter
+
+https://github.com/rashidabengali/sei33-homework/tree/master/warmup/week11/day03_text_soup_3

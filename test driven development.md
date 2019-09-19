@@ -15,3 +15,11 @@ Shows all the tests as a little summary of how the code works. You can add this 
 ```
 rspec --format=documentation
 ```
+
+
+## Mocha
+
+[Resource](https://blog.logrocket.com/a-quick-and-complete-guide-to-mocha-testing-d0e0ea09f09d/)
+
+- Write a failing test
+- get that test to pass, then continue.
